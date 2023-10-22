@@ -3,76 +3,47 @@ import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
 import PageTitle from "./../components/common/PageTitle";
-import SmallStats from "./../components/common/SmallStats";
-import UsersOverview from "./../components/blog/UsersOverview";
-import UsersByDevice from "./../components/blog/UsersByDevice";
-import NewDraft from "./../components/blog/NewDraft";
-import Discussions from "./../components/blog/Discussions";
-import TopReferrals from "./../components/common/TopReferrals";
+import NewRegistration from "./../components/registration/NewRegistration";
+import PlayerPool from "./../components/registration/PlayerPool";
+import ReservePool from "./../components/registration/ReservePool";
 
-const BlogOverview = ({ smallStats }) => (
+const Registration = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
     {/* Page Header */}
     <Row noGutters className="page-header py-4">
-      <PageTitle title="Blog Overview" subtitle="Dashboard" className="text-sm-left mb-3" />
+      <PageTitle title="Player Registration" subtitle="Monday, October 23, 2023" className="text-sm-left mb-3" />
     </Row>
 
-    {/* Small Stats Blocks */}
-    <Row>
-      {smallStats.map((stats, idx) => (
-        <Col className="col-lg mb-4" key={idx} {...stats.attrs}>
-          <SmallStats
-            id={`small-stats-${idx}`}
-            variation="1"
-            chartData={stats.datasets}
-            chartLabels={stats.chartLabels}
-            label={stats.label}
-            value={stats.value}
-            percentage={stats.percentage}
-            increase={stats.increase}
-            decrease={stats.decrease}
-          />
-        </Col>
-      ))}
-    </Row>
+    
 
     <Row>
-      {/* Users Overview */}
-      <Col lg="8" md="12" sm="12" className="mb-4">
-        <UsersOverview />
-      </Col>
-
-      {/* Users by Device */}
+      
+      {/* Add New */}
       <Col lg="4" md="6" sm="12" className="mb-4">
-        <UsersByDevice />
+        <NewRegistration />
       </Col>
 
-      {/* New Draft */}
-      <Col lg="4" md="6" sm="12" className="mb-4">
-        <NewDraft />
-      </Col>
-
-      {/* Discussions */}
-      <Col lg="5" md="12" sm="12" className="mb-4">
-        <Discussions />
-      </Col>
-
-      {/* Top Referrals */}
+      {/* Top 30 Players */}
       <Col lg="3" md="12" sm="12" className="mb-4">
-        <TopReferrals />
+        <PlayerPool />
+      </Col>
+
+      {/* Reserve Players */}
+      <Col lg="3" md="12" sm="12" className="mb-4">
+        <ReservePool />
       </Col>
     </Row>
   </Container>
 );
 
-BlogOverview.propTypes = {
+Registration.propTypes = {
   /**
    * The small stats dataset.
    */
   smallStats: PropTypes.array
 };
 
-BlogOverview.defaultProps = {
+Registration.defaultProps = {
   smallStats: [
     {
       label: "Posts",
@@ -170,4 +141,4 @@ BlogOverview.defaultProps = {
   ]
 };
 
-export default BlogOverview;
+export default Registration;

@@ -35,5 +35,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@wixc3/react-board": "^2.3.0"
+  }
 }

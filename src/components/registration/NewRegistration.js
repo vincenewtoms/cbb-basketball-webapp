@@ -11,8 +11,8 @@ import {
   Button
 } from "shards-react";
 
-const NewDraft = ({ title }) => (
-  <Card small className="h-100">
+const NewRegistration = ({ title }) => (
+  <Card small className="h-30">
     {/* Card Header */}
     <CardHeader className="border-bottom">
       <h6 className="m-0">{title}</h6>
@@ -22,18 +22,15 @@ const NewDraft = ({ title }) => (
       <Form className="quick-post-form">
         {/* Title */}
         <FormGroup>
-          <FormInput placeholder="Brave New World" />
+          <FormInput placeholder="name" />
         </FormGroup>
 
-        {/* Body */}
-        <FormGroup>
-          <FormTextarea placeholder="Words can be like X-rays if you use them properly..." />
-        </FormGroup>
+    
 
         {/* Create Draft */}
         <FormGroup className="mb-0">
           <Button theme="accent" type="submit">
-            Create Draft
+            Register
           </Button>
         </FormGroup>
       </Form>
@@ -41,15 +38,15 @@ const NewDraft = ({ title }) => (
   </Card>
 );
 
-NewDraft.propTypes = {
+NewRegistration.propTypes = {
   /**
    * The component's title.
    */
   title: PropTypes.string
 };
 
-NewDraft.defaultProps = {
-  title: "New Draft"
+NewRegistration.defaultProps = {
+  title: "New Registration"
 };
 
-export default NewDraft;
+export default NewRegistration;

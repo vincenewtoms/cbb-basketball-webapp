@@ -11,36 +11,37 @@ import {
   Col
 } from "shards-react";
 
-const Discussions = ({ title, discussions }) => (
+const ReservePool = ({ title, players }) => (
   <Card small className="blog-comments">
     <CardHeader className="border-bottom">
       <h6 className="m-0">{title}</h6>
     </CardHeader>
 
     <CardBody className="p-0">
-      {discussions.map((discussion, idx) => (
+      {players.map((players, idx) => (
         <div key={idx} className="blog-comments__item d-flex p-3">
+          
+          {/* Sequence */}
+          <div className="blog-comments__avatar mr-3">
+             <a className="text-primary">
+                {players.id}
+              </a>{" "}
+          </div>
+
           {/* Avatar */}
           <div className="blog-comments__avatar mr-3">
-            <img src={discussion.author.image} alt={discussion.author.name} />
+            <img src={players.author.image} alt={players.author.name} />
           </div>
 
           {/* Content */}
           <div className="blog-comments__content">
             {/* Content :: Title */}
             <div className="blog-comments__meta text-mutes">
-              <a className="text-secondary" href={discussion.author.url}>
-                {discussion.author.name}
+              <a className="text-secondary" href={players.author.url}>
+                {players.author.name}
               </a>{" "}
-              on{" "}
-              <a className="text-secondary" href={discussion.post.url}>
-                {discussion.post.title}
-              </a>
-              <span className="text-mutes">- {discussion.date}</span>
+              <span className="text-mutes">- {players.date}</span>
             </div>
-
-            {/* Content :: Body */}
-            <p className="m-0 my-1 mb-2 text-muted">{discussion.body}</p>
 
             {/* Content :: Actions */}
             <div className="blog-comments__actions">
@@ -49,16 +50,16 @@ const Discussions = ({ title, discussions }) => (
                   <span className="text-success">
                     <i className="material-icons">check</i>
                   </span>{" "}
-                  Approve
+                  Check-In
                 </Button>
                 <Button theme="white">
                   <span className="text-danger">
                     <i className="material-icons">clear</i>
                   </span>{" "}
-                  Reject
+                  Remove
                 </Button>
                 <Button theme="white">
-                  <span className="text-light">
+                  <span className="text-edit">
                     <i className="material-icons">more_vert</i>
                   </span>{" "}
                   Edit
@@ -74,7 +75,7 @@ const Discussions = ({ title, discussions }) => (
       <Row>
         <Col className="text-center view-report">
           <Button theme="white" type="submit">
-            View All Comments
+            More Players
           </Button>
         </Col>
       </Row>
@@ -82,7 +83,7 @@ const Discussions = ({ title, discussions }) => (
   </Card>
 );
 
-Discussions.propTypes = {
+ReservePool.propTypes = {
   /**
    * The component's title.
    */
@@ -90,15 +91,15 @@ Discussions.propTypes = {
   /**
    * The discussions dataset.
    */
-  discussions: PropTypes.array
+  players: PropTypes.array
 };
 
-Discussions.defaultProps = {
-  title: "Discussions",
-  discussions: [
+ReservePool.defaultProps = {
+  title: "Reserve Players",
+  players: [
     {
-      id: 1,
-      date: "3 days ago",
+      id: 31,
+      date: "0 games played",
       author: {
         image: require("../../images/avatars/1.jpg"),
         name: "John Doe",
@@ -111,8 +112,8 @@ Discussions.defaultProps = {
       body: "Well, the way they make shows is, they make one show ..."
     },
     {
-      id: 2,
-      date: "4 days ago",
+      id: 32,
+      date: "0 games played",
       author: {
         image: require("../../images/avatars/2.jpg"),
         name: "John Doe",
@@ -125,8 +126,8 @@ Discussions.defaultProps = {
       body: "After the avalanche, it took us a week to climb out. Now..."
     },
     {
-      id: 3,
-      date: "5 days ago",
+      id: 33,
+      date: "0 games played",
       author: {
         image: require("../../images/avatars/3.jpg"),
         name: "John Doe",
@@ -141,4 +142,4 @@ Discussions.defaultProps = {
   ]
 };
 
-export default Discussions;
+export default ReservePool;
