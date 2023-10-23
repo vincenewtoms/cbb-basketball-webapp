@@ -11,42 +11,53 @@ import {
   Button
 } from "shards-react";
 
-const NewRegistration = ({ title }) => (
-  <Card small className="h-30">
-    {/* Card Header */}
-    <CardHeader className="border-bottom">
-      <h6 className="m-0">{title}</h6>
-    </CardHeader>
+import { useAtom } from 'jotai';
+import { formRegisterAtom } from '../../atoms';
+import axios from 'axios';
 
-    <CardBody className="d-flex flex-column">
-      <Form className="quick-post-form">
-        {/* Title */}
-        <FormGroup>
-          <FormInput placeholder="name" />
-        </FormGroup>
+function NewRegistration() {
+  const [formData, setFormData] = useAtom(formRegisterAtom);
 
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        {/* Create Draft */}
-        <FormGroup className="mb-0">
-          <Button theme="accent" type="submit">
-            Register
-          </Button>
-        </FormGroup>
-      </Form>
-    </CardBody>
-  </Card>
-);
+    try {
+      const response = await axios.post('https://casual-kiosk-api.au-s1.cloudhub.io/api/bookings/1/registrations', formData);
+      console.log('Response:', response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
-NewRegistration.propTypes = {
-  /**
-   * The component's title.
-   */
-  title: PropTypes.string
-};
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-NewRegistration.defaultProps = {
-  title: "New Registration"
-};
+  return (
+    <Card small className="h-30">
+      {/* Card Header */}
+      <CardHeader className="border-bottom">
+        <h6 className="m-0">New Registration</h6>
+      </CardHeader>
 
+      <CardBody className="d-flex flex-column">
+        <Form className="quick-post-form" onSubmit={handleSubmit}>
+          <FormGroup>
+            <FormInput placeholder="Name" name="name" value={formData.name}
+            onChange={handleInputChange}/>
+          </FormGroup>
+          <FormGroup className="mb-0">
+            <Button theme="accent" type="submit">
+              Register
+            </Button>
+          </FormGroup>
+        </Form>
+      </CardBody>
+    </Card>
+  );
+}
 export default NewRegistration;
