@@ -9,14 +9,14 @@ import GameSelect2 from "./../components/game/GameSelect2";
 import GameQueue from "./../components/game/GameQueue";
 import ReservePool from "./../components/registration/ReservePool";
 
-const Game = ({ smallStats }) => (
+const Game = () => (
   <Container fluid className="main-content-container px-4">
     {/* Page Header */}
     <Row noGutters className="page-header py-4">
       <PageTitle title="It's Game Time" subtitle="Monday, October 23, 2023" className="text-sm-left mb-3" />
     </Row>
 
-    
+
 
     <Row>
 

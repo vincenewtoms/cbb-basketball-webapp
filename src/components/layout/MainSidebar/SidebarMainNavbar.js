@@ -35,7 +35,7 @@ class SidebarMainNavbar extends React.Component {
                 id="main-logo"
                 className="d-inline-block align-top mr-1"
                 style={{ maxWidth: "25px" }}
-                src={require("../../../images/shards-dashboards-logo.svg")}
+                src="https://seeklogo.com/images/B/basketball-logo-15048F5611-seeklogo.com.png"
                 alt="KBC Dashboard"
               />
               {!hideLogoText && (

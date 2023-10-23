@@ -7,7 +7,7 @@ import NewRegistration from "./../components/registration/NewRegistration";
 import PlayerPool from "./../components/registration/PlayerPool";
 import ReservePool from "./../components/registration/ReservePool";
 
-const Registration = ({ smallStats }) => (
+const Registration = () => (
   <Container fluid className="main-content-container px-4">
     {/* Page Header */}
     <Row noGutters className="page-header py-4">
