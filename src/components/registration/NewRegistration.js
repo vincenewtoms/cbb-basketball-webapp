@@ -24,6 +24,7 @@ function NewRegistration() {
     try {
       const response = await axios.post('https://casual-kiosk-api.au-s1.cloudhub.io/api/bookings/1/registrations', formData);
       console.log('Response:', response.data);
+      window.location = "/registration"
     } catch (error) {
       console.error('Error:', error);
     }

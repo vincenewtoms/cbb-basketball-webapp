@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useAtom } from "jotai";
-import { registeredPlayersAtom } from "../../data/store";
+import { registeredPlayersAtom } from '../../atoms';
 import PropTypes from "prop-types";
 import {
   Card,
@@ -38,12 +38,12 @@ function PlayerPool() {
         </CardHeader>
 
         <CardBody className="p-0">
-          {data.players.map((player, idx) => (
+          {data.players && data.players.map((player, idx) => (
             <div key={idx} className="blog-comments__item d-flex p-3">
              {/* Sequence */}
               <div className="blog-comments__avatar mr-3">
                  <a className="text-primary">
-                    {player.id}
+                    {player.regNumber}
                   </a>{" "}
               </div>
               {/* Avatar */}
@@ -55,7 +55,7 @@ function PlayerPool() {
               <div className="blog-comments__content">
                 {/* Content :: Title */}
                 <div className="blog-comments__meta text-mutes">
-                  <a className="text-secondary">
+                  <a className="text-secondary" href="#">
                     {player.name}
                   </a>{" "}
                 </div>
