@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 // Layout Types
 import { DefaultLayout } from "./layouts";
@@ -13,7 +13,7 @@ export default [
     path: "/",
     exact: true,
     layout: DefaultLayout,
-    component: () => <Redirect to="/registration" />
+    component: () => <Navigate replace to="/registration" />
   },
   {
     path: "/registration",

@@ -36,13 +36,4 @@ const Registration = () => (
   </Container>
 );
 
-Registration.propTypes = {
-  /**
-   * The small stats dataset.
-   */
-  smallStats: PropTypes.array
-};
-
-
-
 export default Registration;

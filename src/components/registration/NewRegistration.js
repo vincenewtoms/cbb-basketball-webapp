@@ -10,24 +10,26 @@ import {
   FormTextarea,
   Button
 } from "shards-react";
-
+import { useNavigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { formRegisterAtom } from '../../atoms';
 import axios from 'axios';
+import PlayerPool from "./PlayerPool";
 
 function NewRegistration() {
   const [formData, setFormData] = useAtom(formRegisterAtom);
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post('https://casual-kiosk-api.au-s1.cloudhub.io/api/bookings/1/registrations', formData);
       console.log('Response:', response.data);
-      window.location = "/registration"
+      window.location.replace("/registration");
     } catch (error) {
       console.error('Error:', error);
     }
+
   };
 
   const handleInputChange = (e) => {

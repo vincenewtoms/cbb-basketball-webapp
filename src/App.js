@@ -1,31 +1,29 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 
 import routes from "./routes";
 import withTracker from "./withTracker";
 
+import { DefaultLayout } from "./layouts";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
 
-export default () => (
-  <Router basename={""}>
-    <div>
-      {routes.map((route, index) => {
-        return (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={withTracker(props => {
-              return (
-                <route.layout {...props}>
-                  <route.component {...props} />
-                </route.layout>
-              );
-            })}
-          />
-        );
-      })}
-    </div>
-  </Router>
-);
+// Route Views
+import Registration from "./views/Registration";
+import Game from "./views/Game";
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+      <Route path="/" exact element={<Navigate replace to="/registration" />} />
+      <Route path="/registration" element={<DefaultLayout><Registration /></DefaultLayout>} />
+      <Route path="/game" element={<DefaultLayout><Game /></DefaultLayout>} />
+      </Routes>
+    </Router>
+
+  );
+};
+
+export default App;
