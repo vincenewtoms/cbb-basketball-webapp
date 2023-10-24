@@ -18,10 +18,8 @@ const App = () => {
     <Router>
       <Routes>
       <Route path="/" exact element={<Navigate replace to="/registration" />} />
-      <Route path="/registration/" exact element={<Navigate replace to="/registration" />} />
       <Route path="/registration" element={<DefaultLayout><Registration /></DefaultLayout>} />
       <Route path="/game" element={<DefaultLayout><Game /></DefaultLayout>} />
-      <Route path="/game/" exact element={<Navigate replace to="/game" />} />
       </Routes>
     </Router>
 
